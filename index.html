@@ -1,38 +1,313 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>JesusActivo | Gamer & Tecnología</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" />
-<style>
-body {margin:0;font-family:'Outfit',sans-serif;background:#05070d;color:#e8f3ff;text-align:center;}
-header{background:linear-gradient(90deg,#0ea5e9,#7c3aed);padding:20px 0;}
-h1{margin:0;font-size:2.4rem;}
-.socials{margin:40px auto;display:flex;justify-content:center;flex-wrap:wrap;gap:20px;}
-a.btn{background:#0ea5e9;color:#fff;padding:12px 20px;border-radius:50px;text-decoration:none;font-weight:700;}
-a.btn:hover{background:#7c3aed;}
-footer{margin-top:60px;padding:20px 0;color:#9fb7d0;border-top:1px solid #1c2a3f;}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JesusActivo — Gaming, Tutoriales y Energía ⚡️</title>
+  <meta name="description" content="El universo de JesusActivo: gaming, tutoriales y motivación. Sitio ultrarrápido con animaciones, micro‑interacciones y diseño de siguiente nivel." />
+  <meta property="og:title" content="JesusActivo — Gaming, Tutoriales y Energía" />
+  <meta property="og:description" content="Explora clips, guías y novedades con una experiencia épica y fluida." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Favicon dinámico (SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop stop-color='%230ea5e9'/><stop offset='1' stop-color='%237c3aed'/></linearGradient></defs><rect width='64' height='64' rx='14' fill='url(%23g)'/><path d='M14 46l8-28h8l-8 28h-8Zm28 0l-4-14h-6l2-6h6l-2-8h8l8 28h-12Z' fill='white'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#05070d; --txt:#e8f3ff; --muted:#9fb7d0;
+      --brand:#0ea5e9; --accent:#7c3aed; --radius:22px;
+      --ring:0 0 0 1px rgba(14,165,233,.35), 0 10px 30px rgba(124,58,237,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:radial-gradient(1200px 800px at 20% 10%,#0a1230 0%,#05070d 55%);color:var(--txt);font-family:'Outfit',system-ui,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92%);margin-inline:auto}
+
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,#05070df2 0,#05070d80 60%,#05070d00 100%);backdrop-filter:blur(8px);border-bottom:1px solid #0f1b3a}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:14px;background:conic-gradient(from 210deg at 30% 30%,#1e293b, #0ea5e9, #7c3aed, #1e293b);box-shadow:var(--ring)}
+    .brand span{font-weight:800;letter-spacing:.4px}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1;color:var(--brand)}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--accent));color:white;font-weight:800;box-shadow:0 8px 30px rgba(14,165,233,.35)}
+
+    .hero{position:relative;isolation:isolate;min-height:88vh;display:grid;place-items:center;overflow:hidden}
+    canvas#bg{position:absolute;inset:0;z-index:0}
+    .hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1516557070061-c3d1653fa646?q=80&w=1887&auto=format&fit=crop') center/cover no-repeat;filter:contrast(1.05) saturate(1.08) brightness(.65);mix-blend-mode:overlay;opacity:.9}
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 70% 10%,#0000,#0009),linear-gradient(180deg,#0000 0,#05070d 95%)}
+    .hero-inner{position:relative;z-index:2;display:grid;gap:18px;text-align:center;padding:96px 0}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#071228;border:1px solid #0b2b48;color:#a9d8ff;padding:6px 12px;border-radius:999px}
+    .title{font-size:clamp(2.2rem,4vw+1rem,4rem);line-height:1.04;margin:0}
+    .grad{background:linear-gradient(90deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{color:var(--muted);max-width:880px;margin:0 auto}
+    .socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:#0a1328;border:1px solid #12345a}
+
+    section{padding:80px 0}
+    .section-title{font-size:1.95rem;margin:0 0 20px}
+    .grid{display:grid;gap:20px}
+    @media(min-width:860px){.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}}
+
+    .card{position:relative;background:linear-gradient(180deg,#0c152e66,#0b1020cc);border:1px solid #0f1b3a;border-radius:var(--radius);overflow:hidden;transform-style:preserve-3d}
+    .card::after{content:"";position:absolute;inset:-1px;background:radial-gradient(600px 200px at var(--mx,50%) var(--my,50%),#0ea5e92e,#0000 40%),radial-gradient(300px 120px at var(--mx,50%) var(--my,50%),#7c3aed22,#0000 30%);pointer-events:none}
+    .content{padding:18px}
+    .tag{display:inline-block;font-size:.75rem;background:#05101a;border:1px solid #112334;color:#9cc7ff;padding:4px 8px;border-radius:999px}
+
+    .yt-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid #142749}
+    .yt-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    .about{display:grid;gap:24px}
+    .about p{color:var(--muted)}
+    form{display:grid;gap:12px}
+    input, textarea{background:#0b1320;border:1px solid #1c2a3f;border-radius:14px;color:#cfe8ff;padding:12px}
+    textarea{min-height:120px;resize:vertical}
+    button.btn{cursor:pointer;border:0;border-radius:14px;padding:12px 16px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(14,165,233,.25)}
+
+    footer{padding:40px 0;color:#a3b8cc;border-top:1px solid #102040}
+    .small{font-size:.92rem;color:#8aa2bb}
+  </style>
 </head>
 <body>
-<header>
-<h1>JesusActivo</h1>
-<p>Gaming | Tutoriales | Tecnología Moderna</p>
-</header>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#inicio" aria-label="Inicio JesusActivo">
+          <span class="logo" aria-hidden="true"></span>
+          <span>JesusActivo</span>
+        </a>
+        <div class="menu">
+          <a href="#videos">Videos</a>
+          <a href="#tutoriales">Tutoriales</a>
+          <a href="#novedades">Novedades</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#contacto">Contacto</a>
+          <a class="cta" href="https://www.youtube.com/@JesusActivo" target="_blank" rel="noopener">Suscríbete</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-<section>
-<h2>Conéctate conmigo</h2>
-<div class="socials">
-<a class="btn" href="https://www.youtube.com/@JesusActivo" target="_blank">YouTube</a>
-<a class="btn" href="https://www.tiktok.com/@jesusactivo1" target="_blank">TikTok</a>
-<a class="btn" href="https://instagram.com/jesusactivo1" target="_blank">Instagram</a>
-<a class="btn" href="https://wa.me/12066519755?text=Hola%20JesusActivo%2C%20vengo%20desde%20tu%20web" target="_blank">WhatsApp</a>
-</div>
-</section>
+  <main id="inicio" class="hero">
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div class="hero-inner container">
+      <span class="badge">⚡️ Experiencia Next‑Gen • 🎮 Gaming • 🎓 Tutoriales</span>
+      <h1 class="title">Bienvenido al universo de <span class="grad">JesusActivo</span></h1>
+      <p class="subtitle">Una web de <strong>alto rendimiento</strong> con animaciones fluidas, micro‑interacciones 3D y optimización real para móviles. Descubre mis clips, guías y novedades — diseñado con mentalidad de <em>ingeniería creativa</em>.</p>
+      <div class="socials">
+        <a class="pill" href="https://www.youtube.com/@JesusActivo" target="_blank" rel="noopener">YouTube</a>
+        <a class="pill" href="https://www.tiktok.com/@jesusactivo1" target="_blank" rel="noopener">TikTok</a>
+        <a class="pill" href="https://instagram.com/jesusactivo1" target="_blank" rel="noopener">Instagram</a>
+        <a class="pill" href="https://wa.me/12066519755?text=Hola%20JesusActivo%2C%20vengo%20desde%20tu%20web" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+  </main>
 
-<footer>
-<p>© 2025 JesusActivo. Todos los derechos reservados.</p>
-</footer>
+  <section id="videos">
+    <div class="container">
+      <h2 class="section-title">🎬 Últimos Videos</h2>
+      <p class="small" style="margin-top:-8px;margin-bottom:16px">Consejo: cambia los IDs de los iframes por tu último video o tu playlist de uploads.</p>
+      <div class="grid grid-2">
+        <article class="card tilt">
+          <div class="yt-embed">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video destacado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="content">
+            <span class="tag">Destacado</span>
+            <h3>Lo más épico de la semana</h3>
+            <p class="small">Reemplaza por tu último gameplay o trailer del canal.</p>
+          </div>
+        </article>
+        <article class="card tilt">
+          <div class="yt-embed">
+            <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="Tutorial reciente" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="content">
+            <span class="tag">Tutorial</span>
+            <h3>Guía express</h3>
+            <p class="small">Usa este espacio para un tip o guía rápida.</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:16px"><a class="cta" href="https://www.youtube.com/@JesusActivo" target="_blank" rel="noopener">Ver canal completo</a></p>
+    </div>
+  </section>
+
+  <section id="tutoriales">
+    <div class="container">
+      <h2 class="section-title">🛠️ Tutoriales & Tips</h2>
+      <div class="grid grid-3">
+        <article class="card tilt">
+          <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1470&auto=format&fit=crop" alt="Tech tutorial" />
+          <div class="content">
+            <span class="tag">Guía</span>
+            <h3>Optimiza tu laptop para juegos</h3>
+            <p class="small">Energía, GPU, drivers y FPS al máximo.</p>
+          </div>
+        </article>
+        <article class="card tilt">
+          <img src="https://images.unsplash.com/photo-1605901309584-818e25960a8b?q=80&w=1470&auto=format&fit=crop" alt="Gaming" />
+          <div class="content">
+            <span class="tag">Setup</span>
+            <h3>Mi setup recomendado</h3>
+            <p class="small">Periféricos, accesorios y apps esenciales.</p>
+          </div>
+        </article>
+        <article class="card tilt">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop" alt="Content creation" />
+          <div class="content">
+            <span class="tag">Creator</span>
+            <h3>Cómo edito mis Shorts</h3>
+            <p class="small">Flujo rápido para TikTok & YouTube.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="novedades">
+    <div class="container">
+      <h2 class="section-title">📰 Novedades</h2>
+      <div class="grid grid-3">
+        <article class="card tilt"><div class="content">
+          <span class="tag">Update</span>
+          <h3>Nuevo video: FPS a otro nivel</h3>
+          <p class="small">Guía paso a paso para exprimir rendimiento en juegos populares.</p>
+        </div></article>
+        <article class="card tilt"><div class="content">
+          <span class="tag">Comunidad</span>
+          <h3>Streams en TikTok</h3>
+          <p class="small">Sígueme en @jesusactivo1 para clips y directos.</p>
+        </div></article>
+        <article class="card tilt"><div class="content">
+          <span class="tag">Colab</span>
+          <h3>¿Quieres colaborar?</h3>
+          <p class="small">Marcas y creadores: escriban en Contacto. Respondo rápido.</p>
+        </div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="container about">
+      <h2 class="section-title">🙌 Sobre mí</h2>
+      <div class="grid grid-2">
+        <div class="card tilt"><div class="content">
+          <p>Hola, soy <strong>JesusActivo</strong>. Comparto <em>gaming</em>, tutoriales de tecnología y motivación diaria. 
+          <br>Mi lema: <strong>“Agradezco a Dios por ayudarme en mis metas y por lo que viene”</strong> 🙏</p>
+          <p class="small">¿Quieres colaborar o enviar un producto para review? Escríbeme abajo.</p>
+        </div></div>
+        <div class="card tilt"><div class="content">
+          <ul class="small" style="line-height:1.8">
+            <li>🎮 Juegos favoritos: Ark y simuladores.</li>
+            <li>💡 Contenido: clips, reseñas, guías rápidas.</li>
+            <li>📲 Redes: TikTok, YouTube e Instagram.</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <h2 class="section-title">✉️ Contacto</h2>
+      <div class="grid grid-2">
+        <form class="card tilt" action="https://formsubmit.co/jesusgomez.usa2022@gmail.com" method="POST">
+          <div class="content">
+            <input type="text" name="name" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo" required>
+            <textarea name="message" placeholder="Cuéntame tu idea o colaboración" required></textarea>
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde jesusactivo.com"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://www.youtube.com/@JesusActivo">
+            <button class="btn" type="submit">Enviar</button>
+            <p class="small">Formulario con <strong>FormSubmit</strong>. Sin backend ni plugins.</p>
+          </div>
+        </form>
+        <div class="card tilt"><div class="content">
+          <h3>¿Prefieres directo?</h3>
+          <p class="small">Escríbeme por Instagram o TikTok, o envía un correo:</p>
+          <p><a class="pill" href="mailto:jesusgomez.usa2022@gmail.com?subject=Colaboración%20con%20JesusActivo">📧 jesusgomez.usa2022@gmail.com</a></p>
+          <p class="small">También por WhatsApp:</p>
+          <p><a class="pill" href="https://wa.me/12066519755?text=Hola%20JesusActivo%2C%20vengo%20desde%20tu%20web" target="_blank" rel="noopener">💬 Abrir chat en WhatsApp</a></p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+        <p class="small">© <span id="year"></span> JesusActivo. Todos los derechos reservados.</p>
+        <p class="small">Hecho con ❤️ y mucha cafeína.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fondo de partículas cinéticas (canvas) — ligero
+    const c = document.getElementById('bg');
+    const ctx = c.getContext('2d');
+    let W, H, dots;
+    function resize(){ W = c.width = innerWidth; H = c.height = Math.max(innerHeight*0.88, 420); create(); }
+    function create(){
+      const n = Math.min(120, Math.floor(W*H/18000));
+      dots = Array.from({length:n},()=>({ x: Math.random()*W, y: Math.random()*H, r: Math.random()*1.8+0.4,
+        vx: (Math.random()-.5)*0.4, vy: (Math.random()-.5)*0.4 }));
+    }
+    function step(){
+      ctx.clearRect(0,0,W,H);
+      const g = ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0,'rgba(14,165,233,.10)'); g.addColorStop(1,'rgba(124,58,237,.06)');
+      ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+      for(let i=0;i<dots.length;i++){
+        const a=dots[i]; a.x+=a.vx; a.y+=a.vy;
+        if(a.x<0||a.x>W) a.vx*=-1; if(a.y<0||a.y>H) a.vy*=-1;
+        for(let j=i+1;j<dots.length;j++){
+          const b=dots[j]; const dx=a.x-b.x, dy=a.y-b.y; const d=Math.hypot(dx,dy);
+          if(d<120){ ctx.strokeStyle=`rgba(158,197,255,${1-d/120})`; ctx.lineWidth=0.6; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+        }
+      }
+      for(const p of dots){
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(207,232,255,.85)'; ctx.fill();
+      }
+      requestAnimationFrame(step);
+    }
+    addEventListener('resize', resize, {passive:true}); resize(); step();
+
+    // Tilt 3D sutil en tarjetas
+    const tilts = document.querySelectorAll('.tilt');
+    tilts.forEach(card=>{
+      let rAF; const clamp=8;
+      card.addEventListener('mousemove',e=>{
+        const b=card.getBoundingClientRect();
+        const mx = (e.clientX-b.left)/b.width; const my=(e.clientY-b.top)/b.height;
+        card.style.setProperty('--mx', `${mx*100}%`); card.style.setProperty('--my', `${my*100}%`);
+        const rx=(.5-my)*clamp, ry=(mx-.5)*clamp;
+        cancelAnimationFrame(rAF); rAF=requestAnimationFrame(()=>{ card.style.transform=`perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`; });
+      });
+      ['mouseleave','blur'].forEach(ev=>card.addEventListener(ev,()=>{ card.style.transform='perspective(800px) rotateX(0) rotateY(0)'; }));
+    });
+  </script>
+
+  <!--
+    Personaliza rápido:
+    1) Portada "de guerra": cambia la imagen del HERO en .hero::before si quieres otra.
+    2) Reemplaza los iframes por tus videos o playlist.
+    3) El formulario envía a jesusgomez.usa2022@gmail.com.
+  -->
 </body>
 </html>
